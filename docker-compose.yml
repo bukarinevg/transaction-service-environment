@@ -1,0 +1,46 @@
+version: "3.8"
+
+services:
+  transaction-service-backend:
+    build: ./transaction-service-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./transaction-service-backend:/var/www
+    depends_on:
+      - db
+      - redis
+    networks:
+      - transaction-network
+
+  transaction-service-frontend:
+    build: ./transaction-service-frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./transaction-service-frontend:/app
+    networks:
+      - transaction-network
+
+  db:
+    image: mariadb:10.8
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: transactions
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - transaction-network
+
+  redis:
+    image: redis:alpine
+    networks:
+      - transaction-network
+
+networks:
+  transaction-network:
+
+volumes:
+  dbdata:
