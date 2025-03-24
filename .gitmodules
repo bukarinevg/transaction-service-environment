@@ -1,0 +1,6 @@
+[submodule "transaction-service-backend"]
+	path = transaction-service-backend
+	url = https://github.com/bukarinevg/transaction-service-backend.git
+[submodule "transaction-service-frontend"]
+	path = transaction-service-frontend
+	url = https://github.com/bukarinevg/transaction-service-frontend.git
