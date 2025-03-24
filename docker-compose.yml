@@ -1,12 +1,24 @@
 version: "3.8"
 
 services:
-  transaction-service-backend:
-    build: ./transaction-service-backend
+  nginx:
+    image: nginx:alpine
     ports:
-      - "8000:8000"
+      - "8080:80"
+      - "443:443"
     volumes:
       - ./transaction-service-backend:/var/www
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - transaction-service-backend
+    networks:
+      - transaction-network
+
+  transaction-service-backend:
+    build: ./transaction-service-backend
+    volumes:
+      - ./transaction-service-backend:/var/www
+      - vendor:/var/www/vendor
     depends_on:
       - db
       - redis
@@ -44,3 +56,6 @@ networks:
 
 volumes:
   dbdata:
+    driver: local
+  vendor:
+    driver: local

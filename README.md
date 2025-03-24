@@ -11,7 +11,28 @@ Structure of the project:
 
 To run the transaction service,  run the following command:
 
-```bash
-docker-compose up --build
+
+## Prepare Laravel environment
+```sh
+cp transaction-service-backend/.env.example transaction-service-backend/.env
 ```
 
+## Start Docker containers
+```sh
+docker-compose up --build -d
+```
+
+## Install PHP dependencies
+```sh
+docker-compose exec transaction-service-backend composer install
+```
+
+## Generate Laravel key
+```sh
+docker-compose exec transaction-service-backend php artisan key:generate
+```
+
+## Run migrations
+```sh
+docker-compose exec transaction-service-backend php artisan migrate
+```
