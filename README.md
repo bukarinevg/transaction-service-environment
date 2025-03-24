@@ -10,6 +10,8 @@ Structure of the project:
     ├── transaction-service-frontend
 
 To run the transaction service,  run the following command:
+
 ```bash
 docker-compose up --build
 ```
+
