@@ -36,3 +36,13 @@ docker-compose exec transaction-service-backend php artisan key:generate
 ```sh
 docker-compose exec transaction-service-backend php artisan migrate
 ```
+
+## Run seeders
+```sh
+docker-compose exec transaction-service-backend php artisan db:seed
+```
+
+## If you want to run queue worker
+```sh
+docker-compose exec transaction-service-backend php artisan queue:work
+```
