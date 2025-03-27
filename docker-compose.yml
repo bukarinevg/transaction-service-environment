@@ -25,14 +25,15 @@ services:
     networks:
       - transaction-network
 
-  # transaction-service-frontend:
-  #   build: ./transaction-service-frontend
-  #   ports:
-  #     - "3000:3000"
-  #   volumes:
-  #     - ./transaction-service-frontend:/app
-  #   networks:
-  #     - transaction-network
+  transaction-service-frontend:
+    build: ./transaction-service-frontend
+    ports:
+      - "3000:5173"
+    volumes:
+      - ./transaction-service-frontend:/app
+      - /app/node_modules
+    networks:
+      - transaction-network
 
   db:
     image: mariadb:10.8
@@ -55,6 +56,7 @@ networks:
   transaction-network:
 
 volumes:
+
   dbdata:
     driver: local
   vendor:
