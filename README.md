@@ -29,6 +29,11 @@ To run the transaction service,  run the following command:
 
 ##  Installation
 
+### Clone the repository
+```sh
+git clone --recurse-submodules https://github.com/your-name/transaction-service-environment.git
+```
+
 ### Prepare Laravel environment
 ```sh
 cp transaction-service-backend/.env.example transaction-service-backend/.env
