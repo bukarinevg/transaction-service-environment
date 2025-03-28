@@ -72,7 +72,18 @@ docker-compose exec transaction-service-backend php artisan queue:work
 
 #### Backend local installation finished
 
+###
+Login  on url 
+```sh
+server_url - http://68.183.65.192:3000/
+localhost_url - localhost:3000
+```
 
+as user - 
+```sh
+user - test@test.com
+password - password
+```
 
 
 
